@@ -3,17 +3,19 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 50f;
+    private Rigidbody _rigidbody;
 
-    
+
     void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        transform.Translate(Vector3.forward * _moveSpeed * Time.deltaTime);
-         
+        //transform.Translate(Vector3.forward * _moveSpeed * Time.deltaTime);
+        Movement();
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,6 +29,11 @@ public class EnemyMovement : MonoBehaviour
             transform.Rotate(0, 180f, 0);
             playerStats.TakeDamage();
         }
+    }
+
+    private void Movement()
+    {
+        _rigidbody.MovePosition(transform.position + transform.forward * _moveSpeed * Time.deltaTime);
     }
 
 }

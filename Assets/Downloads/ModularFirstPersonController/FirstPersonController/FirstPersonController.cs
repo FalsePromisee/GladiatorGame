@@ -96,7 +96,9 @@ public class FirstPersonController : MonoBehaviour
 
     public bool enableJump = true;
     public KeyCode jumpKey = KeyCode.Space;
-    public float jumpPower = 5f;
+    public float jumpPower = 10f;
+
+    private float _jumpPowerMax = 20f;
 
     // Internal Variables
     private bool isGrounded = false;
@@ -325,11 +327,22 @@ public class FirstPersonController : MonoBehaviour
 
         #region Jump
 
+        if (isGrounded)
+        {
+            jumpPower += Time.deltaTime;
+            if (jumpPower > _jumpPowerMax)
+            {
+                jumpPower = _jumpPowerMax;
+            }
+        }
+        
+
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
             Jump();
         }
+        
 
         #endregion
 
@@ -465,6 +478,7 @@ public class FirstPersonController : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+            jumpPower = 0;
             isGrounded = false;
         }
 
