@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3725134717746213599}
   - component: {fileID: 3224260684253890499}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e0145889fad3a4296d3ed9d9e96172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _enemyPrefab: {fileID: 4889565401325010130, guid: 6f9b39b3398bdf04a9cde7ef0287b157, type: 3}

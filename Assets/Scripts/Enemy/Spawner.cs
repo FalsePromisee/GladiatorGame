@@ -2,13 +2,22 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private GameObject _enemyPrefab;
+
+    
+
     void Start()
     {
-        
+        //Instantiate(_enemyPrefab, _spawnPoint, Quaternion.identity);
+        InvokeRepeating("SpawnEnemy", 2f, 5f);
     }
 
-    // Update is called once per frame
+    private void SpawnEnemy()
+    {
+        Instantiate(_enemyPrefab, transform.position + transform.forward * 5, Quaternion.identity);
+    }
+
+
     void Update()
     {
         
