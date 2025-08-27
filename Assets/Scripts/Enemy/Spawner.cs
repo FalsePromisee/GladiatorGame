@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private Transform _enemyContainer;
+    
     [SerializeField] private GameObject _enemyPrefab;
 
     
@@ -14,12 +16,8 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Instantiate(_enemyPrefab, transform.position + transform.forward * 5, Quaternion.identity);
+        float spawnOffset = 5f;
+        Instantiate(_enemyPrefab, transform.position + transform.forward * spawnOffset, Quaternion.identity, _enemyContainer);
     }
 
-
-    void Update()
-    {
-        
-    }
 }

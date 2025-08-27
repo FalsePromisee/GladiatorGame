@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     private int _health = 3;
+    private int _coinsPickedUp = 0;
 
 
     private void Start()
@@ -19,6 +20,12 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("Player Dead");
         }
+    }
+
+    public void PickUpCoin()
+    {
+        _coinsPickedUp++;
+        Debug.Log("Coins: " +  _coinsPickedUp);
     }
 
 
