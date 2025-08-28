@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   _coin: {fileID: 1912261556565121124, guid: 9ab09ea072dbd4c24b509183951954a1, type: 3}
-  _healthPoints: {fileID: 1912261556565121124, guid: 9ab09ea072dbd4c24b509183951954a1, type: 3}
+  _healthPoints: {fileID: 5911562417054572069, guid: eb132fb2801244283b153e70d997748e, type: 3}
   _coinAndHealthContainer: {fileID: 1660606432}
 --- !u!4 &448783193
 Transform:

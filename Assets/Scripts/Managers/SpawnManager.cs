@@ -9,18 +9,18 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Transform _coinAndHealthContainer;
 
     private float _timeToSpawnCoin = 5f;
-    private float _repeatRateTime = 10f;
+    private float _repeatRateTimeCoin = 10f;
+    
+    private float _timeToSpawnHealthPoints = 60f;
+    private float _repeatRateTimeHealthPoints = 150f;
     
     
     void Start()
     {
-        InvokeRepeating("CoinSpawner", _timeToSpawnCoin, _repeatRateTime);
+        InvokeRepeating("CoinSpawner", _timeToSpawnCoin, _repeatRateTimeCoin);
+        InvokeRepeating("HealthPointSpawner", _timeToSpawnHealthPoints, _repeatRateTimeHealthPoints) ;
     }
 
-    void Update()
-    {
-        
-    }
 
     private void CoinSpawner()
     {
