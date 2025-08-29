@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats Instance { get; private set; }
+
+    
+
     private int _health = 3;
     private int _maxHealth = 3;
     private int _coinsPickedUp = 0;
@@ -10,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         Debug.Log("Player Health: " + _health);
+        Instance = this;
     }
 
 

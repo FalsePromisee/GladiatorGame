@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     
     [SerializeField] private Transform _coinAndHealthContainer;
 
+    public static int EnemyCount { get; private set; } = 0;
+
     private float _timeToSpawnCoin = 5f;
     private float _repeatRateTimeCoin = 10f;
     
@@ -39,5 +41,16 @@ public class SpawnManager : MonoBehaviour
         Instantiate(_healthPoints, new Vector3(randomXpoint, 1, randomZpoint), Quaternion.identity, _coinAndHealthContainer);
 
     }
-    
+
+    public static void IncreasEnemyCount()
+    {
+        EnemyCount++;
+        Debug.Log("Enemy Count: " + EnemyCount);
+    }
+
+    public static void DecreaseEnemyCount()
+    {
+        EnemyCount--;
+    }
+
 }
