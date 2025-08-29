@@ -32,13 +32,18 @@ public class EnemyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             _playerDirection = (_player.transform.position - transform.position).normalized;
-            _moveDirection = _playerDirection;
+            _moveDirection = _player.transform.position - transform.position;
+            _moveDirection.y = 0;
+            _moveDirection.Normalize();
             transform.forward = _moveDirection;
         }
         if(collision.gameObject.TryGetComponent<PlayerStats>(out var playerStats))
         {
-            //transform.Rotate(0, 180f, 0);
             playerStats.TakeDamage();
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            transform.forward = -transform.forward;
         }
     }
 

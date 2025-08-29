@@ -96,9 +96,10 @@ public class FirstPersonController : MonoBehaviour
 
     public bool enableJump = true;
     public KeyCode jumpKey = KeyCode.Space;
-    public float jumpPower = 10f;
+    public float jumpPower = 5f;
 
-    private float _jumpPowerMax = 20f;
+    private float _jumpPowerMax = 10f;
+    private float _jumpRegenMultiplier = 2f;
 
     // Internal Variables
     private bool isGrounded = false;
@@ -329,7 +330,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (isGrounded)
         {
-            jumpPower += Time.deltaTime;
+            jumpPower += Time.deltaTime * _jumpRegenMultiplier;
             if (jumpPower > _jumpPowerMax)
             {
                 jumpPower = _jumpPowerMax;
