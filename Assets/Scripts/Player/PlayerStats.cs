@@ -10,6 +10,8 @@ public class PlayerStats : MonoBehaviour
     private int _maxHealth = 3;
     private int _coinsPickedUp = 0;
 
+    private float _imuneTime = 2f;
+
 
     private void Start()
     {
@@ -17,10 +19,20 @@ public class PlayerStats : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        _imuneTime += Time.deltaTime;
+    }
+
 
     public void TakeDamage()
     {
-        _health--;
+        if (_imuneTime > 2f)
+        {
+            _health--;
+            _imuneTime = 0f;
+            Debug.Log("Player took damage");
+        }
         Debug.Log("Player Health: " + _health);
         if (_health <= 0)
         {

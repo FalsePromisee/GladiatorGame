@@ -15,15 +15,11 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        
-        
     }
 
     void FixedUpdate()
     {
         Movement();
-        
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,10 +37,7 @@ public class EnemyMovement : MonoBehaviour
         {
             playerStats.TakeDamage();
         }
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            transform.forward = -transform.forward;
-        }
+        
     }
 
     private void Movement()
@@ -56,8 +49,5 @@ public class EnemyMovement : MonoBehaviour
     {
         this._playerDirection = (_playerDirection - transform.position).normalized;
     }
-
-    
-
 
 }
