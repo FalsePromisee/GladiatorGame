@@ -17,6 +17,7 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
+    public static FirstPersonController Instance { get; private set; }
 
     #region Camera Movement Variables
 
@@ -137,6 +138,7 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        Instance = this;
 
         crosshairObject = GetComponentInChildren<Image>();
 
@@ -488,6 +490,10 @@ public class FirstPersonController : MonoBehaviour
         {
             Crouch();
         }
+    }
+    public float GetJumpPower()
+    {
+        return jumpPower / _jumpPowerMax;
     }
 
     private void Crouch()

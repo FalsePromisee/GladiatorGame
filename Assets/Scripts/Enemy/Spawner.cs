@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        //will change the way it spawns later
         InvokeRepeating("SpawnEnemy", _startSpawnTime, _spawnInterval);
     }
 
