@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -13,6 +14,9 @@ public class PlayerStats : MonoBehaviour
     private float _imuneTime = 2f;
 
 
+    public event Action<int> OnCoinsPickedUp;
+    public event Action<int> OnHealthChanged;
+    
     private void Start()
     {
         Debug.Log("Player Health: " + _health);
@@ -31,6 +35,7 @@ public class PlayerStats : MonoBehaviour
         {
             _health--;
             _imuneTime = 0f;
+            OnHealthChanged?.Invoke(_health);
             Debug.Log("Player took damage");
         }
         Debug.Log("Player Health: " + _health);
@@ -43,12 +48,14 @@ public class PlayerStats : MonoBehaviour
     public void PickUpCoin()
     {
         _coinsPickedUp++;
+        OnCoinsPickedUp?.Invoke(_coinsPickedUp);
         Debug.Log("Coins: " +  _coinsPickedUp);
     }
 
     public void RestoreHealthPoints()
     {
         _health++;
+        OnHealthChanged?.Invoke(_health);
         if (_health > _maxHealth)
         {
             _health = _maxHealth;
