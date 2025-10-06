@@ -8,6 +8,13 @@ public class ScoreUpdater : MonoBehaviour
     [SerializeField] private TMP_Text _coinText;
     [SerializeField] private TMP_Text _healthText;
 
+    private void Start()
+    {
+        _coinText.text = _playerStats.CoinAmount().ToString();
+        _healthText.text = _playerStats.HealthAmount().ToString();
+    }
+    
+    
     private void OnEnable()
     {
         _playerStats.OnCoinsPickedUp += OnPlayerPickUpCoin;

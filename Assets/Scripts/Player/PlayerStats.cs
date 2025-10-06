@@ -63,8 +63,14 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Health: " + _health);
     }
 
+    public int CoinAmount()
+    {
+        return _coinsPickedUp;
+    }
 
-
-
+    public int HealthAmount()
+    {
+        return _health;
+    }
 
 }
