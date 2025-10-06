@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour
 
     public event Action<int> OnCoinsPickedUp;
     public event Action<int> OnHealthChanged;
+    public event Action OnGameOver;
     
     private void Start()
     {
@@ -41,6 +42,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player Health: " + _health);
         if (_health <= 0)
         {
+            OnGameOver?.Invoke();
             Debug.Log("Player Dead");
         }
     }
